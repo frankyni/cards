@@ -5,13 +5,31 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
-<%= yield %>
+	<header>
+		<nav>
+			<% if current_user %>
+				<%= link_to "Logout", destroy_user_session_path, method: :delete, class: :button %>
+				<%= link_to "New Project", projects_path, method: :post, class: :button %>
+			<% else %>
+				<%= link_to "Login", new_user_session_path, class: :button %>
+				<%= link_to "Sign Up", new_user_registration_path, class: :button %>
+			<% end %>
+		</nav>
+		<% if current_user %>
+			<h1><%= "Hello #{current_user.name}" %></h1>
+		<% else %>
+			<h1>Cards</h1>
+		<% end %>
+	</header>
+
+	<div class="notice"><%= notice %></div>
+	<div class="alert"><%= alert %></div>
+
+	<%= yield %>
 
 </body>
 </html>

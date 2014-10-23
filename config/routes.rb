@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  # get 'projects/index'
+
+  # get 'project/:id', to: 'projects#show', as: 'project'
+
+  resources :projects, except: [:new, :edit] do
+    resources :cards, except: [:new, :edit, :show]
+  end
+
   devise_for :users
 
   root 'homes#index'

@@ -1,0 +1,14 @@
+<h1><%= @project.title %></h1>
+
+<%= link_to 'add card', project_cards_path(@project), method: :post, class: :button %>
+
+<div id="board">
+	<% @project.cards.each do |card| %>
+
+		<div class="card">
+			<h3><%= card.title %></h3>
+			<p><%= card.body %></p>
+		</div>
+
+	<% end %>
+</div>
