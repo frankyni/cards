@@ -9,7 +9,7 @@
 
 		<% if @project %>
 			| <%= link_to 'Projects', projects_path, class: :button %> 
-			| <%= link_to 'add card', project_cards_path(@project), method: :post, class: :button %>
+			| <%= link_to 'add card', project_cards_path(@project), method: :post, remote: true, class: :button %>
 		<% end %>
 
 	<% else %>

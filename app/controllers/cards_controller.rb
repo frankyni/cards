@@ -4,10 +4,25 @@ class CardsController < ApplicationController
 
 	def create
 		@card = Card.create(title: "new card", body: "write something here ...", project_id: params[:project_id])
-		redirect_to :back, notice: "New card added"
+		
+		respond_to do |format|
+			format.html { redirect_to :back, notice: "New card added"}
+			format.js
+		end
 	end
 
 	def update
+		if @card.update(params.require(:card).permit(:title, :body))
+	  		respond_to do |format|
+			      format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
+			      format.json { respond_with_bip(@card) }
+			  end
+		else
+			respond_to do|format|
+			    format.html { redirect_to(@project , notice: "Something went wrong") }
+			    format.json { respond_with_bip(@card) }
+			end
+	    end
 	end
 
 	def destroy

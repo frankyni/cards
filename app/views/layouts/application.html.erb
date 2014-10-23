@@ -14,7 +14,7 @@
 		<%= render 'shared/nav' %>
 
 		<% if current_user && @project %>
-			<h1><%= @project.title %></h1>
+			<h1><%= best_in_place @project, :title, :type => :input %></h1>
 		<% elsif current_user %>
 			<h1><%= "Hello #{current_user.name}" %></h1>
 		<% else %>

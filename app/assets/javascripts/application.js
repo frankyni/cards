@@ -11,6 +11,18 @@
 // about supported directives.
 //
 //= require jquery
+//= require best_in_place
+//= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on('ready page:load', function() {
+  
+  $(".best_in_place").best_in_place();
+
+  $("#board").sortable({
+  	appendTo: ("#board");
+  });
+
+});
