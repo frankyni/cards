@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # get 'project/:id', to: 'projects#show', as: 'project'
 
   resources :projects, except: [:new, :edit] do
-    resources :cards, except: [:new, :edit, :show]
+    resources :cards, except: [:new, :edit, :show] do
+      collection {post :sort}
+    end
   end
 
   devise_for :users

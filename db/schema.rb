@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023153026) do
+ActiveRecord::Schema.define(version: 20141023211959) do
 
   create_table "cards", force: true do |t|
     t.integer  "project_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20141023153026) do
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "position"
   end
 
   add_index "cards", ["project_id"], name: "index_cards_on_project_id"

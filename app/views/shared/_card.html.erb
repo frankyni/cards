@@ -1,8 +1,10 @@
-<div class="card">
+
+<%= content_tag_for :div, card do %>
+
 	<div class="header">
 		<span class="nav"><%= link_to "X", project_card_path(project_id: card.project.id, id: card.id), data:{confirm: "Are you sure?", method: :delete, remote: true}, class: "delete-card" %></span>
 		<h3><%= best_in_place card, :title, :type => :input, url: project_card_path(card.project, card), nil: "Title this card" %></h3>
 	</div>
 	<p><%= best_in_place card, :body, :type => :textarea, url: project_card_path(card.project, card), nil: "Add some text here" %></p>
 	
-</div>
+<% end %>

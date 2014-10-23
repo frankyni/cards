@@ -22,7 +22,12 @@ $(document).on('ready page:load', function() {
   $(".best_in_place").best_in_place();
 
   $("#board").sortable({
-  	appendTo: ("#board");
+  	appendTo: $("#board"),
+  	update: function(){
+  		$.post($(this).data('update-url'),
+  			$(this).sortable('serialize'));
+  	}
+
   });
 
 });

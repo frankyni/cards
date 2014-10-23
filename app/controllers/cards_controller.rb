@@ -2,6 +2,17 @@ class CardsController < ApplicationController
 
 	before_action :set_card, only: [:update, :destroy]
 
+	def sort
+		cards = params[:card]
+		cards.each_with_index do |card, index|
+			Card.find(card).update(position: (index + 1))
+		end
+
+		respond_to do |format|
+			format.js {head :no_content}
+		end
+	end
+
 	def create
 		@card = Card.create(title: "new card", body: "write something here ...", project_id: params[:project_id])
 		
