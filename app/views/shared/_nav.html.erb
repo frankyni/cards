@@ -1,0 +1,21 @@
+<nav>
+	<% if current_user %>
+
+		<%= link_to "Logout", destroy_user_session_path, method: :delete, class: :button %> 
+
+		<% unless @project %>
+			| <%= link_to "New Project", projects_path, method: :post, class: :button %>
+		<% end %>
+
+		<% if @project %>
+			| <%= link_to 'Projects', projects_path, class: :button %> 
+			| <%= link_to 'add card', project_cards_path(@project), method: :post, class: :button %>
+		<% end %>
+
+	<% else %>
+
+		<%= link_to "Login", new_user_session_path, class: :button %>
+		<%= link_to "Sign Up", new_user_registration_path, class: :button %>
+
+	<% end %>
+</nav>

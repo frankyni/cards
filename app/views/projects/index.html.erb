@@ -1,7 +1,5 @@
-<h1><%= @project.title %></h1>
-
-<!-- # <% @project.cards.each do |card| %>
-
-# 	<%= card %>
-
-# <% end %> -->
+<% @projects.each do |project| %>
+	<div>
+		<%= link_to project.title, project %>
+	</div>
+<% end %>

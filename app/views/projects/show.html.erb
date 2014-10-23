@@ -1,13 +1,13 @@
-<h1><%= @project.title %></h1>
-
-<%= link_to 'add card', project_cards_path(@project), method: :post, class: :button %>
-
 <div id="board">
 	<% @project.cards.each do |card| %>
 
 		<div class="card">
-			<h3><%= card.title %></h3>
+			<div class="header">
+				<span class="nav"><%= link_to "X", project_card_path(@project, id: card.id), data:{confirm: "Are you sure?"}, method: :delete, class: "delete-card", remote: true %></span>
+				<h3><%= card.title %></h3>
+			</div>
 			<p><%= card.body %></p>
+			
 		</div>
 
 	<% end %>

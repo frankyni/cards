@@ -10,24 +10,27 @@
 <body>
 
 	<header>
-		<nav>
-			<% if current_user %>
-				<%= link_to "Logout", destroy_user_session_path, method: :delete, class: :button %>
-				<%= link_to "New Project", projects_path, method: :post, class: :button %>
-			<% else %>
-				<%= link_to "Login", new_user_session_path, class: :button %>
-				<%= link_to "Sign Up", new_user_registration_path, class: :button %>
-			<% end %>
-		</nav>
-		<% if current_user %>
+
+		<%= render 'shared/nav' %>
+
+		<% if current_user && @project %>
+			<h1><%= @project.title %></h1>
+		<% elsif current_user %>
 			<h1><%= "Hello #{current_user.name}" %></h1>
 		<% else %>
 			<h1>Cards</h1>
 		<% end %>
+
 	</header>
 
-	<div class="notice"><%= notice %></div>
-	<div class="alert"><%= alert %></div>
+	<% if notice %>
+		<div id="notice"><%= notice %></div>
+	<% end %>
+
+	<% if alert %>
+		<div id="alert"><%= alert %></div>
+	<% end %>
+
 
 	<%= yield %>
 
